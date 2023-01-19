@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 7.3 Frechet Derivatives
-# 
-# 
-# 
+# # Frechet Derivatives - Overview
 
 # If $T$ is Frechet differentiable, then $\delta T(x; h) = A_x h$, where $A_x$ is a bounded linear operator from $X$ to $Y$. The Frechet derivative $T': D \subseteq X \to B(X, Y)$ of $T$ is defined as the mapping that maps the point $x$ to the bounded operator $A_x$. 
 # 
