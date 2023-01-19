@@ -23,6 +23,7 @@ bibtex_bibfiles:
 sphinx:
   config:
     bibtex_reference_style: author_year
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # Information about where the book exists on the web
 repository:
@@ -35,3 +36,13 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - dollarmath
+  myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
+  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+

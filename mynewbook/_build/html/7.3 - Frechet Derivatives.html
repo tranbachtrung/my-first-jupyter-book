@@ -360,6 +360,36 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="frechet-derivatives-overview">
 <h1>Frechet Derivatives - Overview<a class="headerlink" href="#frechet-derivatives-overview" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+a_1=b_1+c_1\\
+a_2=b_2+c_2-d_2+e_2
+\end{gather*}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-8accf455-0a74-4f6b-8787-e2614d10484c">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8accf455-0a74-4f6b-8787-e2614d10484c" title="Permalink to this equation">#</a></span>\[\begin{align}
+a_{11}&amp; =b_{11}&amp;
+  a_{12}&amp; =b_{12}\\
+a_{21}&amp; =b_{21}&amp;
+  a_{22}&amp; =b_{22}+c_{22}
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\mathbb{R} + \mathcal{N} + \text{Var}(X^2) +\mathbf{Q}
+\end{gather*}\]</div>
 <p>If <span class="math notranslate nohighlight">\(T\)</span> is Frechet differentiable, then <span class="math notranslate nohighlight">\(\delta T(x; h) = A_x h\)</span>, where <span class="math notranslate nohighlight">\(A_x\)</span> is a bounded linear operator from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>. The Frechet derivative <span class="math notranslate nohighlight">\(T': D \subseteq X \to B(X, Y)\)</span> of <span class="math notranslate nohighlight">\(T\)</span> is defined as the mapping that maps the point <span class="math notranslate nohighlight">\(x\)</span> to the bounded operator <span class="math notranslate nohighlight">\(A_x\)</span>.</p>
 <p>We say that the Frechet derivative of <span class="math notranslate nohighlight">\(T\)</span> is continuous at <span class="math notranslate nohighlight">\(x_0\)</span> if the mapping <span class="math notranslate nohighlight">\(T'\)</span> is continuous at <span class="math notranslate nohighlight">\(x_0\)</span>; this is different from say <span class="math notranslate nohighlight">\(T'(x_0)\)</span> is continuous - which is always true. If the derivative of <span class="math notranslate nohighlight">\(T\)</span> is continuous on some open sphere <span class="math notranslate nohighlight">\(S\)</span>, we say that <span class="math notranslate nohighlight">\(T\)</span> is continuously Frechet differentiable on <span class="math notranslate nohighlight">\(S\)</span>.</p>
 <blockquote>
@@ -370,17 +400,19 @@ title="Print to PDF"
 derivatives. For instance, the implicit function theorem and Taylor series
 have very satisfactory extensions. The interested reader should consult the references cited at the end of the chapter.</p>
 <p><strong>Claim.</strong> If <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable at <span class="math notranslate nohighlight">\(x\in D\)</span>, then <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\((\alpha_1 T_1 + \alpha_2 T_2)'(x) = \alpha_1 T_1'(x) + \alpha_2 T_2'(x).\)</span></p>
-<p><strong>Proof.</strong> To show that that <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable, let <span class="math notranslate nohighlight">\(x \in D, h \in X\)</span> be given. It is true that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> exists, since
-\begin{align}
-\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) &amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[(\alpha_1 T_1 + \alpha_2 T_2)(x + h) - (\alpha_1 T_1 + \alpha_2 T_2)(x)]\
-&amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_1 T_1(x + h) - \alpha_1 T_1(x)] + \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_2 T_2(x + h) - \alpha_2 T_2(x)]\
+<p><strong>Proof.</strong> To show that that <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable, let <span class="math notranslate nohighlight">\(x \in D, h \in X\)</span> be given. It is true that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> exists, since</p>
+<div class="amsmath math notranslate nohighlight" id="equation-889be44c-62cf-438e-98cb-05e91816e31b">
+<span class="eqno">(2)<a class="headerlink" href="#equation-889be44c-62cf-438e-98cb-05e91816e31b" title="Permalink to this equation">#</a></span>\[\begin{align}
+\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) &amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[(\alpha_1 T_1 + \alpha_2 T_2)(x + h) - (\alpha_1 T_1 + \alpha_2 T_2)(x)]\\
+&amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_1 T_1(x + h) - \alpha_1 T_1(x)] + \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_2 T_2(x + h) - \alpha_2 T_2(x)]\\
 &amp; = \alpha_1 \delta T_1(x; h) + \alpha_2 \delta T_2(x; h).
-\end{align}
-Hence, <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Gateux differentiable. Moreover, <span class="math notranslate nohighlight">\(\delta T_1(x; h)\)</span> and <span class="math notranslate nohighlight">\(\delta T_2(x; h)\)</span> are linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>, meaning that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> is also linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>. Finally, if we define <span class="math notranslate nohighlight">\(T: = \alpha_1 T_1 + \alpha_2 T_2\)</span>, then
-\begin{align}
-\lim_{\lVert h \rVert \to 0} &amp; \frac{\lVert T(x + h) - T(x) - \delta T(x; h) \rVert_Y}{\lVert h \rVert_X} \ &amp;\leq \lim_{\lVert h \rVert \to 0} \lvert \alpha_1 \rvert \frac{\lVert T_1(x + h) - T_1(x) - \delta T_1(x; h) \rVert_Y}{\lVert h \rVert_X} + \lim_{\lVert h \rVert \to 0} \lvert \alpha_2 \rvert \frac{\lVert T_2(x + h) - T_2(x) - \delta T_2(x; h) \rVert_Y}{\lVert h \rVert_X},
-\end{align}
-by the triangle inequality. The RHS converges to 0, since <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable. We also have
+\end{align}\]</div>
+<p>Hence, <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Gateux differentiable. Moreover, <span class="math notranslate nohighlight">\(\delta T_1(x; h)\)</span> and <span class="math notranslate nohighlight">\(\delta T_2(x; h)\)</span> are linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>, meaning that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> is also linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>. Finally, if we define <span class="math notranslate nohighlight">\(T: = \alpha_1 T_1 + \alpha_2 T_2\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight" id="equation-aeef6150-b980-40ee-82f0-2e0adf07c634">
+<span class="eqno">(3)<a class="headerlink" href="#equation-aeef6150-b980-40ee-82f0-2e0adf07c634" title="Permalink to this equation">#</a></span>\[\begin{align}
+\lim_{\lVert h \rVert \to 0} &amp; \frac{\lVert T(x + h) - T(x) - \delta T(x; h) \rVert_Y}{\lVert h \rVert_X} \\ &amp;\leq \lim_{\lVert h \rVert \to 0} \lvert \alpha_1 \rvert \frac{\lVert T_1(x + h) - T_1(x) - \delta T_1(x; h) \rVert_Y}{\lVert h \rVert_X} + \lim_{\lVert h \rVert \to 0} \lvert \alpha_2 \rvert \frac{\lVert T_2(x + h) - T_2(x) - \delta T_2(x; h) \rVert_Y}{\lVert h \rVert_X},
+\end{align}\]</div>
+<p>by the triangle inequality. The RHS converges to 0, since <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable. We also have
 <span class="math notranslate nohighlight">\(
 \delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) = \alpha_1 \delta T_1(x; h) + \alpha_2 \delta T_2(x; h),\)</span> meaning that
 $<span class="math notranslate nohighlight">\(
@@ -418,15 +450,16 @@ P'(y) \lim_{\lVert h \rVert \to 0}\frac{ g - S'(x)h}{\lVert h \rVert} = 0 \Leftr
 One has \)</span>\lVert g \rVert = O(\lVert h \rVert)<span class="math notranslate nohighlight">\( as \)</span>\lVert h \rVert \to 0<span class="math notranslate nohighlight">\( because, by the Frechet diferentiability of \)</span>S<span class="math notranslate nohighlight">\( and the fact that since \)</span>S’(x)<span class="math notranslate nohighlight">\( is bounded, we have
 \)</span><span class="math notranslate nohighlight">\(
 \lim_{\lVert h \rVert \to 0}\frac{\lVert g  \rVert}{\lVert h \rVert} = \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x)h \rVert}{\lVert h \rVert} \leq \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x) \rVert \lVert h \rVert}{\lVert h \rVert} = \lVert S'(x) \rVert &lt; \infty.
-\)</span><span class="math notranslate nohighlight">\(
-Then:
-\begin{align}
+\)</span>$
+Then:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1b6ad989-689a-4844-9cae-22f63211f3d7">
+<span class="eqno">(4)<a class="headerlink" href="#equation-1b6ad989-689a-4844-9cae-22f63211f3d7" title="Permalink to this equation">#</a></span>\[\begin{align}
 &amp;\lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)S'(x)h \rVert} {\lVert h \rVert} \\
 &amp;\leq \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} + \lim_{\lVert h \rVert \to 0} \frac{\lVert P'(y)g -P'(y)S'(x)h \rVert} {\lVert h \rVert}\\
 &amp;= \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} = \lim_{\lVert g \rVert \to 0} \frac {\lVert P(y+g)-P(y)-P'(y)g \rVert} {\lVert g \rVert} \lim_{\lVert h \rVert \to 0} \frac{\lVert g \rVert}{\lVert h \rVert} \leq 0 \cdot \lVert S'(x) \rVert = 0.
-\end{align}
-Note that in the last line, we can change from limit of \)</span>\lVert h \rVert \to 0<span class="math notranslate nohighlight">\( to \)</span>\lVert g \rVert \to 0<span class="math notranslate nohighlight">\( because according to Proposition 3 of Section 7.2, \)</span>S<span class="math notranslate nohighlight">\( is continuous at \)</span>x<span class="math notranslate nohighlight">\(, leading to
-\)</span><span class="math notranslate nohighlight">\(
+\end{align}\]</div>
+<p>Note that in the last line, we can change from limit of <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span> to <span class="math notranslate nohighlight">\(\lVert g \rVert \to 0\)</span> because according to Proposition 3 of Section 7.2, <span class="math notranslate nohighlight">\(S\)</span> is continuous at <span class="math notranslate nohighlight">\(x\)</span>, leading to
+$<span class="math notranslate nohighlight">\(
 \lim_{\lVert h \rVert \to 0} g = \lim_{\lVert h \rVert \to 0} S(x+h)-S(x) = S(x + \lim_{\lVert h \rVert \to 0}h)-S(x) = S(x) - S(x) = 0.
 \)</span>$</p>
 <p>Since Frechet differential is unique, we have
@@ -434,18 +467,19 @@ $<span class="math notranslate nohighlight">\(
 T'(x)h = P'(y)S'(x)h.
 \)</span>$</p>
 <blockquote>
-<div><p><em>Note</em>: It is also beneficial to learn the short hand argument approach through big <span class="math notranslate nohighlight">\(o\)</span> and little <span class="math notranslate nohighlight">\(O\)</span> notation presented in Luenberger. We know <span class="math notranslate nohighlight">\(\lVert T(x+h)-T(x)-P'(y)g \rVert = o(\lVert g \rVert)\)</span> and <span class="math notranslate nohighlight">\(\lVert P'(y)g - P'(y)S'(x)h \rVert = o(\lVert h \rVert)\)</span>, hence
-\begin{align}
-\lVert T(x+h)-T(x)- P’(y) S’(x)h \rVert &amp;\leq \lVert T(x+h)-T(x)-P’(y)g \rVert + \lVert P’(y)g - P’(y)S’(x)h \rVert \
-&amp; = o(\lVert h \rVert) + o(\lVert g \rVert)\
-\Leftrightarrow \frac{\lVert T(x+h)-T(x)- P’(y) S’(x)h \rVert}{\lVert h \rVert} &amp; \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{\lVert g \rVert}{\lVert h \rVert}\
-\end{align}
-One has <span class="math notranslate nohighlight">\(\lVert g \rVert = O(\lVert h \rVert)\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span> because of the Frechet diferentiability of <span class="math notranslate nohighlight">\(S\)</span> and the fact that since <span class="math notranslate nohighlight">\(S'(x)\)</span> is bounded. This also implies that <span class="math notranslate nohighlight">\(\lVert g \rVert \to 0\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span>. Therefore,
+<div><p><em>Note</em>: It is also beneficial to learn the short hand argument approach through big <span class="math notranslate nohighlight">\(o\)</span> and little <span class="math notranslate nohighlight">\(O\)</span> notation presented in Luenberger. We know <span class="math notranslate nohighlight">\(\lVert T(x+h)-T(x)-P'(y)g \rVert = o(\lVert g \rVert)\)</span> and <span class="math notranslate nohighlight">\(\lVert P'(y)g - P'(y)S'(x)h \rVert = o(\lVert h \rVert)\)</span>, hence</p>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight" id="equation-ba46324e-f18c-4955-8d81-7fab6bac8fe4">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ba46324e-f18c-4955-8d81-7fab6bac8fe4" title="Permalink to this equation">#</a></span>\[\begin{align}
+\lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert &amp;\leq \lVert T(x+h)-T(x)-P'(y)g \rVert + \lVert P'(y)g - P'(y)S'(x)h \rVert \\
+&amp; = o(\lVert h \rVert) + o(\lVert g \rVert)\\
+\Leftrightarrow \frac{\lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert}{\lVert h \rVert} &amp; \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{\lVert g \rVert}{\lVert h \rVert}\\
+\end{align}\]</div>
+<p>One has <span class="math notranslate nohighlight">\(\lVert g \rVert = O(\lVert h \rVert)\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span> because of the Frechet diferentiability of <span class="math notranslate nohighlight">\(S\)</span> and the fact that since <span class="math notranslate nohighlight">\(S'(x)\)</span> is bounded. This also implies that <span class="math notranslate nohighlight">\(\lVert g \rVert \to 0\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span>. Therefore,
 $<span class="math notranslate nohighlight">\(
 \frac{\lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert}{\lVert h \rVert} \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{O(\lVert h \rVert)}{\lVert h \rVert}.\\
 \)</span><span class="math notranslate nohighlight">\(
 Taking the limit as \)</span>\lVert h \rVert \to 0$ on both sides yield the desired result.</p>
-</div></blockquote>
 <p><strong>Proposition 2.</strong> Let <span class="math notranslate nohighlight">\(T\)</span> be Frechet diferentiable on a open domain <span class="math notranslate nohighlight">\(D\)</span>. Let <span class="math notranslate nohighlight">\(x \in D\)</span> and suppose that <span class="math notranslate nohighlight">\(x + \alpha h \in D\)</span> for all <span class="math notranslate nohighlight">\(0 \leq \alpha \leq 1\)</span>. Then
 $<span class="math notranslate nohighlight">\(
 \lVert T(x+h) - T(x) \rVert \leq \lVert h \rVert \sup_{0&lt; \alpha &lt; 1} \lVert T'(x+\alpha h) \rVert.

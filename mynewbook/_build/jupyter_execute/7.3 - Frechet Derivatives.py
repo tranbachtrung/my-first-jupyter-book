@@ -3,6 +3,30 @@
 
 # # Frechet Derivatives - Overview
 
+# In[1]:
+
+
+import numpy as np
+
+np.mean([1, 2, 3])
+
+
+# \begin{gather*}
+# a_1=b_1+c_1\\
+# a_2=b_2+c_2-d_2+e_2
+# \end{gather*}
+# 
+# \begin{align}
+# a_{11}& =b_{11}&
+#   a_{12}& =b_{12}\\
+# a_{21}& =b_{21}&
+#   a_{22}& =b_{22}+c_{22}
+# \end{align}
+# 
+# \begin{gather*}
+# \mathbb{R} + \mathcal{N} + \text{Var}(X^2) +\mathbf{Q}
+# \end{gather*}
+
 # If $T$ is Frechet differentiable, then $\delta T(x; h) = A_x h$, where $A_x$ is a bounded linear operator from $X$ to $Y$. The Frechet derivative $T': D \subseteq X \to B(X, Y)$ of $T$ is defined as the mapping that maps the point $x$ to the bounded operator $A_x$. 
 # 
 # We say that the Frechet derivative of $T$ is continuous at $x_0$ if the mapping $T'$ is continuous at $x_0$; this is different from say $T'(x_0)$ is continuous - which is always true. If the derivative of $T$ is continuous on some open sphere $S$, we say that $T$ is continuously Frechet differentiable on $S$.
