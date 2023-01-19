@@ -9,3 +9,5 @@ chapters:
 - file: markdown-notebooks
 - file: mymarkdownfile
 - file: mymarkdownfile2
+- file: notebooks-2
+- file: 7.3 - Frechet Derivatives

@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7.3 Frechet Derivatives &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Content with notebooks - 2" href="notebooks-2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mymarkdownfile.html">
+   Here’s my sample title
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mymarkdownfile2.html">
+   Here’s my sample title
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks-2.html">
+   Content with notebooks - 2
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7.3 Frechet Derivatives
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/tranbachtrung/my-first-jupyter-book/main?urlpath=tree/docs/7.3 - Frechet Derivatives.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/tranbachtrung/my-first-jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/tranbachtrung/my-first-jupyter-book/issues/new?title=Issue%20on%20page%20%2F7.3 - Frechet Derivatives.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/7.3 - Frechet Derivatives.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.3 Frechet Derivatives</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="frechet-derivatives">
+<h1>7.3 Frechet Derivatives<a class="headerlink" href="#frechet-derivatives" title="Permalink to this headline">#</a></h1>
+<p>If <span class="math notranslate nohighlight">\(T\)</span> is Frechet differentiable, then <span class="math notranslate nohighlight">\(\delta T(x; h) = A_x h\)</span>, where <span class="math notranslate nohighlight">\(A_x\)</span> is a bounded linear operator from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>. The Frechet derivative <span class="math notranslate nohighlight">\(T': D \subseteq X \to B(X, Y)\)</span> of <span class="math notranslate nohighlight">\(T\)</span> is defined as the mapping that maps the point <span class="math notranslate nohighlight">\(x\)</span> to the bounded operator <span class="math notranslate nohighlight">\(A_x\)</span>.</p>
+<p>We say that the Frechet derivative of <span class="math notranslate nohighlight">\(T\)</span> is continuous at <span class="math notranslate nohighlight">\(x_0\)</span> if the mapping <span class="math notranslate nohighlight">\(T'\)</span> is continuous at <span class="math notranslate nohighlight">\(x_0\)</span>; this is different from say <span class="math notranslate nohighlight">\(T'(x_0)\)</span> is continuous - which is always true. If the derivative of <span class="math notranslate nohighlight">\(T\)</span> is continuous on some open sphere <span class="math notranslate nohighlight">\(S\)</span>, we say that <span class="math notranslate nohighlight">\(T\)</span> is continuously Frechet differentiable on <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<blockquote>
+<div><p>Note: We want <span class="math notranslate nohighlight">\(S\)</span> to be open because the definition of continuous function requires an open ball of radius <span class="math notranslate nohighlight">\(\delta\)</span> around the querry point <span class="math notranslate nohighlight">\(x_0\)</span>.</p>
+</div></blockquote>
+<p>If <span class="math notranslate nohighlight">\(f\)</span> is a functional, then <span class="math notranslate nohighlight">\(f'(x) \in X^*\)</span> is called the gradient (which is denoted as <span class="math notranslate nohighlight">\(\nabla f(x)\)</span>).</p>
+<p>Much of the theory of ordinary derivatives can be generalized to Frechet
+derivatives. For instance, the implicit function theorem and Taylor series
+have very satisfactory extensions. The interested reader should consult the references cited at the end of the chapter.</p>
+<p><strong>Claim.</strong> If <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable at <span class="math notranslate nohighlight">\(x\in D\)</span>, then <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\((\alpha_1 T_1 + \alpha_2 T_2)'(x) = \alpha_1 T_1'(x) + \alpha_2 T_2'(x).\)</span></p>
+<p><strong>Proof.</strong> To show that that <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable, let <span class="math notranslate nohighlight">\(x \in D, h \in X\)</span> be given. It is true that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> exists, since
+\begin{align}
+\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) &amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[(\alpha_1 T_1 + \alpha_2 T_2)(x + h) - (\alpha_1 T_1 + \alpha_2 T_2)(x)]\
+&amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_1 T_1(x + h) - \alpha_1 T_1(x)] + \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_2 T_2(x + h) - \alpha_2 T_2(x)]\
+&amp; = \alpha_1 \delta T_1(x; h) + \alpha_2 \delta T_2(x; h).
+\end{align}
+Hence, <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Gateux differentiable. Moreover, <span class="math notranslate nohighlight">\(\delta T_1(x; h)\)</span> and <span class="math notranslate nohighlight">\(\delta T_2(x; h)\)</span> are linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>, meaning that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> is also linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>. Finally, if we define <span class="math notranslate nohighlight">\(T: = \alpha_1 T_1 + \alpha_2 T_2\)</span>, then
+\begin{align}
+\lim_{\lVert h \rVert \to 0} &amp; \frac{\lVert T(x + h) - T(x) - \delta T(x; h) \rVert_Y}{\lVert h \rVert_X} \ &amp;\leq \lim_{\lVert h \rVert \to 0} \lvert \alpha_1 \rvert \frac{\lVert T_1(x + h) - T_1(x) - \delta T_1(x; h) \rVert_Y}{\lVert h \rVert_X} + \lim_{\lVert h \rVert \to 0} \lvert \alpha_2 \rvert \frac{\lVert T_2(x + h) - T_2(x) - \delta T_2(x; h) \rVert_Y}{\lVert h \rVert_X},
+\end{align}
+by the triangle inequality. The RHS converges to 0, since <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable. We also have
+<span class="math notranslate nohighlight">\(
+\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) = \alpha_1 \delta T_1(x; h) + \alpha_2 \delta T_2(x; h),\)</span> meaning that
+$<span class="math notranslate nohighlight">\(
+(\alpha_1 T_1 + \alpha_2 T_2)'(x) h = \alpha_1 T_1'(x)h + \alpha_2 T_2'(x)h.
+\)</span>$</p>
+<p><strong>Proposition 1.</strong> Let <span class="math notranslate nohighlight">\(S\)</span> be a transformation mapping an open set <span class="math notranslate nohighlight">\(D \subseteq X\)</span> into an open set <span class="math notranslate nohighlight">\(E \subseteq Y\)</span> and let <span class="math notranslate nohighlight">\(P\)</span> be a transformation mapping <span class="math notranslate nohighlight">\(E\)</span> into a normed space <span class="math notranslate nohighlight">\(Z\)</span>. Put <span class="math notranslate nohighlight">\(T = PS\)</span> and suppose <span class="math notranslate nohighlight">\(S\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(x \in D\)</span> and <span class="math notranslate nohighlight">\(P\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(y = S(x) \in E\)</span>. Then <span class="math notranslate nohighlight">\(T\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(T'(x) = P'(y) S'(x)\)</span>.</p>
+<p><strong>Proof.</strong></p>
+<blockquote>
+<div><p><strong>Definition</strong>:
+<br>Little <span class="math notranslate nohighlight">\(o\)</span> notation: if <span class="math notranslate nohighlight">\(f(x) \in o(g(x))\)</span> as <span class="math notranslate nohighlight">\(x \to a\)</span>, then
+$<span class="math notranslate nohighlight">\(
+\lim_{x \to a} \frac {f(x)} {g(x)} = 0.
+\)</span><span class="math notranslate nohighlight">\(
+&lt;br&gt;Big \)</span>O<span class="math notranslate nohighlight">\( notation: if \)</span>f(x) \in O(g(x))<span class="math notranslate nohighlight">\(  as \)</span>x \to a<span class="math notranslate nohighlight">\(, then
+\)</span><span class="math notranslate nohighlight">\(
+\lim_{x \to a}  \frac {f(x)} {g(x)} &lt; \infty.
+\)</span><span class="math notranslate nohighlight">\(
+For both definition, \)</span>a$ is not specified, then it is equal to 0.</p>
+</div></blockquote>
+<p>For <span class="math notranslate nohighlight">\(h \in X, x+h \in D\)</span>, we have
+$<span class="math notranslate nohighlight">\(
+T(x+h)-T(x) = P[S(x+h)]-P[S(x)] = P(y+g)-P(y)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>g=S(x+h)-S(x)<span class="math notranslate nohighlight">\(. Thus \)</span>\lVert T(x+h)-T(x)-P’(y)g \rVert = o(\lVert g \rVert)<span class="math notranslate nohighlight">\( and \)</span>\lVert g - S’(x)h \rVert = o(\lVert h \rVert)<span class="math notranslate nohighlight">\(. We therefore have
+\)</span><span class="math notranslate nohighlight">\(
+\lim_{\lVert h \rVert \to 0}\frac{\lVert g - S'(x)h \rVert}{\lVert h \rVert} = 0
+\Leftrightarrow
+\lim_{\lVert h \rVert \to 0}\frac{g - S'(x)h }{\lVert h \rVert} = 0.
+\)</span><span class="math notranslate nohighlight">\(
+Thus, by continuity and linearity of \)</span>P’(y)<span class="math notranslate nohighlight">\(, we have
+\)</span><span class="math notranslate nohighlight">\(
+P'(y) \lim_{\lVert h \rVert \to 0}\frac{ g - S'(x)h}{\lVert h \rVert} = 0 \Leftrightarrow
+\lim_{\lVert h \rVert \to 0}\frac{ P'(y) g - P'(y) S'(x)h }{\lVert h \rVert} = 0,
+\)</span><span class="math notranslate nohighlight">\(
+One has \)</span>\lVert g \rVert = O(\lVert h \rVert)<span class="math notranslate nohighlight">\( as \)</span>\lVert h \rVert \to 0<span class="math notranslate nohighlight">\( because, by the Frechet diferentiability of \)</span>S<span class="math notranslate nohighlight">\( and the fact that since \)</span>S’(x)<span class="math notranslate nohighlight">\( is bounded, we have
+\)</span><span class="math notranslate nohighlight">\(
+\lim_{\lVert h \rVert \to 0}\frac{\lVert g  \rVert}{\lVert h \rVert} = \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x)h \rVert}{\lVert h \rVert} \leq \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x) \rVert \lVert h \rVert}{\lVert h \rVert} = \lVert S'(x) \rVert &lt; \infty.
+\)</span><span class="math notranslate nohighlight">\(
+Then:
+\begin{align}
+&amp;\lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)S'(x)h \rVert} {\lVert h \rVert} \\
+&amp;\leq \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} + \lim_{\lVert h \rVert \to 0} \frac{\lVert P'(y)g -P'(y)S'(x)h \rVert} {\lVert h \rVert}\\
+&amp;= \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} = \lim_{\lVert g \rVert \to 0} \frac {\lVert P(y+g)-P(y)-P'(y)g \rVert} {\lVert g \rVert} \lim_{\lVert h \rVert \to 0} \frac{\lVert g \rVert}{\lVert h \rVert} \leq 0 \cdot \lVert S'(x) \rVert = 0.
+\end{align}
+Note that in the last line, we can change from limit of \)</span>\lVert h \rVert \to 0<span class="math notranslate nohighlight">\( to \)</span>\lVert g \rVert \to 0<span class="math notranslate nohighlight">\( because according to Proposition 3 of Section 7.2, \)</span>S<span class="math notranslate nohighlight">\( is continuous at \)</span>x<span class="math notranslate nohighlight">\(, leading to
+\)</span><span class="math notranslate nohighlight">\(
+\lim_{\lVert h \rVert \to 0} g = \lim_{\lVert h \rVert \to 0} S(x+h)-S(x) = S(x + \lim_{\lVert h \rVert \to 0}h)-S(x) = S(x) - S(x) = 0.
+\)</span>$</p>
+<p>Since Frechet differential is unique, we have
+$<span class="math notranslate nohighlight">\(
+T'(x)h = P'(y)S'(x)h.
+\)</span>$</p>
+<blockquote>
+<div><p><em>Note</em>: It is also beneficial to learn the short hand argument approach through big <span class="math notranslate nohighlight">\(o\)</span> and little <span class="math notranslate nohighlight">\(O\)</span> notation presented in Luenberger. We know <span class="math notranslate nohighlight">\(\lVert T(x+h)-T(x)-P'(y)g \rVert = o(\lVert g \rVert)\)</span> and <span class="math notranslate nohighlight">\(\lVert P'(y)g - P'(y)S'(x)h \rVert = o(\lVert h \rVert)\)</span>, hence
+\begin{align}
+\lVert T(x+h)-T(x)- P’(y) S’(x)h \rVert &amp;\leq \lVert T(x+h)-T(x)-P’(y)g \rVert + \lVert P’(y)g - P’(y)S’(x)h \rVert \
+&amp; = o(\lVert h \rVert) + o(\lVert g \rVert)\
+\Leftrightarrow \frac{\lVert T(x+h)-T(x)- P’(y) S’(x)h \rVert}{\lVert h \rVert} &amp; \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{\lVert g \rVert}{\lVert h \rVert}\
+\end{align}
+One has <span class="math notranslate nohighlight">\(\lVert g \rVert = O(\lVert h \rVert)\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span> because of the Frechet diferentiability of <span class="math notranslate nohighlight">\(S\)</span> and the fact that since <span class="math notranslate nohighlight">\(S'(x)\)</span> is bounded. This also implies that <span class="math notranslate nohighlight">\(\lVert g \rVert \to 0\)</span> as <span class="math notranslate nohighlight">\(\lVert h \rVert \to 0\)</span>. Therefore,
+$<span class="math notranslate nohighlight">\(
+\frac{\lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert}{\lVert h \rVert} \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{O(\lVert h \rVert)}{\lVert h \rVert}.\\
+\)</span><span class="math notranslate nohighlight">\(
+Taking the limit as \)</span>\lVert h \rVert \to 0$ on both sides yield the desired result.</p>
+</div></blockquote>
+<p><strong>Proposition 2.</strong> Let <span class="math notranslate nohighlight">\(T\)</span> be Frechet diferentiable on a open domain <span class="math notranslate nohighlight">\(D\)</span>. Let <span class="math notranslate nohighlight">\(x \in D\)</span> and suppose that <span class="math notranslate nohighlight">\(x + \alpha h \in D\)</span> for all <span class="math notranslate nohighlight">\(0 \leq \alpha \leq 1\)</span>. Then
+$<span class="math notranslate nohighlight">\(
+\lVert T(x+h) - T(x) \rVert \leq \lVert h \rVert \sup_{0&lt; \alpha &lt; 1} \lVert T'(x+\alpha h) \rVert.
+\)</span>$</p>
+<p><strong>Proof.</strong> Let <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(h\)</span> be fixed and let <span class="math notranslate nohighlight">\(y^*\)</span> be a nonzero element of the dual space <span class="math notranslate nohighlight">\(Y^*\)</span> aligned with the element <span class="math notranslate nohighlight">\(T(x +h) - T(x)\)</span>. Let us remind ourselves that a vector <span class="math notranslate nohighlight">\(s^* \in S^*\)</span> is said to be aligned with a vector <span class="math notranslate nohighlight">\(s \in S\)</span> if <span class="math notranslate nohighlight">\(s^*(s) = \lVert s^* \rVert \lVert s \rVert\)</span>.</p>
+<p>The function <span class="math notranslate nohighlight">\(\varphi(\alpha) = y^*[T(x+\alpha h)]\)</span> is defined on the interval <span class="math notranslate nohighlight">\([0, 1]\)</span> and by the chain rule, has derivative
+$<span class="math notranslate nohighlight">\(
+\varphi'(\alpha) = y^*[T'(x + \alpha h)h].
+\)</span>$</p>
+<blockquote>
+<div><p><em>Note</em>: This is true since <span class="math notranslate nohighlight">\(y^*\)</span> is linear, meaning that <span class="math notranslate nohighlight">\(\delta y^*(y, k) = y^* (k)\)</span> - or <span class="math notranslate nohighlight">\((y^{*})' = y^*\)</span> (by a note from Section 7.2). We can rewrite <span class="math notranslate nohighlight">\(T(x + \alpha h)= T U(\alpha)\)</span>, where <span class="math notranslate nohighlight">\(U(\alpha) = x + \alpha h\)</span>. We can show that <span class="math notranslate nohighlight">\(\delta U(\alpha; \beta)\)</span> is linear and continuous and Frechet differentiable. Therefore, $<span class="math notranslate nohighlight">\(\delta U(\alpha; \beta) = \lim_{\gamma \to 0} \frac{1}{\gamma} [U(\alpha + \gamma \beta) -  U(\alpha)] = \beta h = U'(\alpha) \beta,\)</span><span class="math notranslate nohighlight">\( meaning that \)</span>U’(\alpha) = h$.</p>
+</div></blockquote>
+<p>By the mean value theorem for functions of a real variable, we have
+$<span class="math notranslate nohighlight">\(\varphi(1) - \varphi(0) = \varphi'(\alpha_0), \text{ for some } 0&lt;\alpha_0 &lt; 1,\)</span><span class="math notranslate nohighlight">\(
+and hence
+\)</span><span class="math notranslate nohighlight">\(
+\lvert y^*[T(x + h) - T(x)]\rvert \leq \lVert y^* \rVert \sup_{0&lt;\alpha&lt;1} \lVert T'(x+\alpha h) \rVert \lVert h \rVert,
+\)</span><span class="math notranslate nohighlight">\(
+and since \)</span>y^<em><span class="math notranslate nohighlight">\( is aligned with \)</span>T(x + h) - T(x)<span class="math notranslate nohighlight">\(, we have 
+\)</span>
+\lVert y^</em> \rVert  \lVert T(x + h) - T(x)\rVert \leq \lVert y^* \rVert \lVert h \rVert \sup_{0&lt;\alpha&lt;1} \lVert T’(x+\alpha h) \rVert,
+<span class="math notranslate nohighlight">\(
+which means
+\)</span><span class="math notranslate nohighlight">\(
+\lVert T(x + h) - T(x)\rVert \leq  \lVert h \rVert \sup_{0&lt;\alpha&lt;1} \lVert T'(x+\alpha h) \rVert.
+\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(T: X \to Y\)</span> is Frechet differentiable on an open domain <span class="math notranslate nohighlight">\(D\subseteq X\)</span>, the derivative <span class="math notranslate nohighlight">\(T'\)</span> maps <span class="math notranslate nohighlight">\(D\)</span> into <span class="math notranslate nohighlight">\(B(X, Y)\)</span> an may itself be Frechet differentiable on a subset <span class="math notranslate nohighlight">\(D_t \subseteq D\)</span>. In this case, the Frechet derivative of <span class="math notranslate nohighlight">\(T'\)</span> is called the second Frechet derivative of <span class="math notranslate nohighlight">\(T\)</span> and is denoted by <span class="math notranslate nohighlight">\(T''.\)</span></p>
+<blockquote>
+<div><p><em>Note</em>: The second Frechet derivative <span class="math notranslate nohighlight">\(T'': D_t \subset X \to B(X, B(X, Y))\)</span>, where <span class="math notranslate nohighlight">\(B(X, B(X, Y))\)</span> is the space of bounded linear mapping between <span class="math notranslate nohighlight">\(X\)</span> and the normed linear space <span class="math notranslate nohighlight">\(B(X, Y)\)</span>.</p>
+</div></blockquote>
+<p><strong>Example 1.</strong> Let <span class="math notranslate nohighlight">\(f\)</span> be a functional on <span class="math notranslate nohighlight">\(X = E^n\)</span> having continuous partial derivatives up to second order. Then <span class="math notranslate nohighlight">\(f''(x_0)\)</span> is an operator from <span class="math notranslate nohighlight">\(E^n\)</span> to <span class="math notranslate nohighlight">\(E^n\)</span> having matrix form
+$<span class="math notranslate nohighlight">\(
+f''(x_0) = \left[\frac{\partial^2 f(x)}{\partial x_i \partial x_j}\right]_{x = x_0},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x_i<span class="math notranslate nohighlight">\( is the \)</span>i<span class="math notranslate nohighlight">\(-th component of \)</span>x$.</p>
+<p><strong>Proposition 3.</strong> Let <span class="math notranslate nohighlight">\(T\)</span> be twice Frechet differentiable on an open domain <span class="math notranslate nohighlight">\(D\)</span>. Let <span class="math notranslate nohighlight">\(x\in D\)</span> and suppose that <span class="math notranslate nohighlight">\(x + \alpha h \in D\)</span> for all <span class="math notranslate nohighlight">\(0\leq \alpha \leq 1\)</span>. Then
+$<span class="math notranslate nohighlight">\(
+\lVert T(x+h) - T(x) - T'(x)h \rVert \leq \frac{1}{2} \lVert h \rVert \sup_{0&lt; \alpha &lt; 1} \lVert T''(x+\alpha h) \rVert.
+\)</span>$</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="notebooks-2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Content with notebooks - 2</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Trung Bach Tran<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
