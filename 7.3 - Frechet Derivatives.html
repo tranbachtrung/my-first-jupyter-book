@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Frechet Derivatives - Overview &#8212; My sample book</title>
+    <title>Frechet Derivatives - Overview Jan 23, 2023 &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -147,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Frechet Derivatives - Overview
+   Frechet Derivatives - Overview Jan 23, 2023
   </a>
  </li>
 </ul>
@@ -346,7 +346,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Frechet Derivatives - Overview</h1>
+                <h1>Frechet Derivatives - Overview Jan 23, 2023</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -358,8 +358,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="frechet-derivatives-overview">
-<h1>Frechet Derivatives - Overview<a class="headerlink" href="#frechet-derivatives-overview" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="frechet-derivatives-overview-jan-23-2023">
+<h1>Frechet Derivatives - Overview Jan 23, 2023<a class="headerlink" href="#frechet-derivatives-overview-jan-23-2023" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -379,8 +379,8 @@ title="Print to PDF"
 a_1=b_1+c_1\\
 a_2=b_2+c_2-d_2+e_2
 \end{gather*}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-8accf455-0a74-4f6b-8787-e2614d10484c">
-<span class="eqno">(1)<a class="headerlink" href="#equation-8accf455-0a74-4f6b-8787-e2614d10484c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-32656c71-5979-49e0-abf4-793d232ad92f">
+<span class="eqno">(1)<a class="headerlink" href="#equation-32656c71-5979-49e0-abf4-793d232ad92f" title="Permalink to this equation">#</a></span>\[\begin{align}
 a_{11}&amp; =b_{11}&amp;
   a_{12}&amp; =b_{12}\\
 a_{21}&amp; =b_{21}&amp;
@@ -401,15 +401,15 @@ derivatives. For instance, the implicit function theorem and Taylor series
 have very satisfactory extensions. The interested reader should consult the references cited at the end of the chapter.</p>
 <p><strong>Claim.</strong> If <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable at <span class="math notranslate nohighlight">\(x\in D\)</span>, then <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\((\alpha_1 T_1 + \alpha_2 T_2)'(x) = \alpha_1 T_1'(x) + \alpha_2 T_2'(x).\)</span></p>
 <p><strong>Proof.</strong> To show that that <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Frechet differentiable, let <span class="math notranslate nohighlight">\(x \in D, h \in X\)</span> be given. It is true that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> exists, since</p>
-<div class="amsmath math notranslate nohighlight" id="equation-889be44c-62cf-438e-98cb-05e91816e31b">
-<span class="eqno">(2)<a class="headerlink" href="#equation-889be44c-62cf-438e-98cb-05e91816e31b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-677e74b0-e678-4f31-9c26-386a223acbef">
+<span class="eqno">(2)<a class="headerlink" href="#equation-677e74b0-e678-4f31-9c26-386a223acbef" title="Permalink to this equation">#</a></span>\[\begin{align}
 \delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h) &amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[(\alpha_1 T_1 + \alpha_2 T_2)(x + h) - (\alpha_1 T_1 + \alpha_2 T_2)(x)]\\
 &amp; = \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_1 T_1(x + h) - \alpha_1 T_1(x)] + \lim_{\alpha \to 0} \frac{1}{\alpha}[\alpha_2 T_2(x + h) - \alpha_2 T_2(x)]\\
 &amp; = \alpha_1 \delta T_1(x; h) + \alpha_2 \delta T_2(x; h).
 \end{align}\]</div>
 <p>Hence, <span class="math notranslate nohighlight">\(\alpha_1 T_1 + \alpha_2 T_2\)</span> is Gateux differentiable. Moreover, <span class="math notranslate nohighlight">\(\delta T_1(x; h)\)</span> and <span class="math notranslate nohighlight">\(\delta T_2(x; h)\)</span> are linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>, meaning that <span class="math notranslate nohighlight">\(\delta (\alpha_1 T_1 + \alpha_2 T_2)(x; h)\)</span> is also linear and bounded in <span class="math notranslate nohighlight">\(h\)</span>. Finally, if we define <span class="math notranslate nohighlight">\(T: = \alpha_1 T_1 + \alpha_2 T_2\)</span>, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aeef6150-b980-40ee-82f0-2e0adf07c634">
-<span class="eqno">(3)<a class="headerlink" href="#equation-aeef6150-b980-40ee-82f0-2e0adf07c634" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6395dea2-bb39-447b-8c88-e39edc54675c">
+<span class="eqno">(3)<a class="headerlink" href="#equation-6395dea2-bb39-447b-8c88-e39edc54675c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \lim_{\lVert h \rVert \to 0} &amp; \frac{\lVert T(x + h) - T(x) - \delta T(x; h) \rVert_Y}{\lVert h \rVert_X} \\ &amp;\leq \lim_{\lVert h \rVert \to 0} \lvert \alpha_1 \rvert \frac{\lVert T_1(x + h) - T_1(x) - \delta T_1(x; h) \rVert_Y}{\lVert h \rVert_X} + \lim_{\lVert h \rVert \to 0} \lvert \alpha_2 \rvert \frac{\lVert T_2(x + h) - T_2(x) - \delta T_2(x; h) \rVert_Y}{\lVert h \rVert_X},
 \end{align}\]</div>
 <p>by the triangle inequality. The RHS converges to 0, since <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> are Frechet differentiable. We also have
@@ -452,8 +452,8 @@ One has \)</span>\lVert g \rVert = O(\lVert h \rVert)<span class="math notransla
 \lim_{\lVert h \rVert \to 0}\frac{\lVert g  \rVert}{\lVert h \rVert} = \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x)h \rVert}{\lVert h \rVert} \leq \lim_{\lVert h \rVert \to 0}\frac{\lVert S'(x) \rVert \lVert h \rVert}{\lVert h \rVert} = \lVert S'(x) \rVert &lt; \infty.
 \)</span>$
 Then:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b6ad989-689a-4844-9cae-22f63211f3d7">
-<span class="eqno">(4)<a class="headerlink" href="#equation-1b6ad989-689a-4844-9cae-22f63211f3d7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3f704c20-93da-4de8-80c2-529baa3473a5">
+<span class="eqno">(4)<a class="headerlink" href="#equation-3f704c20-93da-4de8-80c2-529baa3473a5" title="Permalink to this equation">#</a></span>\[\begin{align}
 &amp;\lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)S'(x)h \rVert} {\lVert h \rVert} \\
 &amp;\leq \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} + \lim_{\lVert h \rVert \to 0} \frac{\lVert P'(y)g -P'(y)S'(x)h \rVert} {\lVert h \rVert}\\
 &amp;= \lim_{\lVert h \rVert \to 0} \frac {\lVert T(x+h)-T(x)-P'(y)g \rVert} {\lVert h \rVert} = \lim_{\lVert g \rVert \to 0} \frac {\lVert P(y+g)-P(y)-P'(y)g \rVert} {\lVert g \rVert} \lim_{\lVert h \rVert \to 0} \frac{\lVert g \rVert}{\lVert h \rVert} \leq 0 \cdot \lVert S'(x) \rVert = 0.
@@ -469,8 +469,8 @@ T'(x)h = P'(y)S'(x)h.
 <blockquote>
 <div><p><em>Note</em>: It is also beneficial to learn the short hand argument approach through big <span class="math notranslate nohighlight">\(o\)</span> and little <span class="math notranslate nohighlight">\(O\)</span> notation presented in Luenberger. We know <span class="math notranslate nohighlight">\(\lVert T(x+h)-T(x)-P'(y)g \rVert = o(\lVert g \rVert)\)</span> and <span class="math notranslate nohighlight">\(\lVert P'(y)g - P'(y)S'(x)h \rVert = o(\lVert h \rVert)\)</span>, hence</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-ba46324e-f18c-4955-8d81-7fab6bac8fe4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-ba46324e-f18c-4955-8d81-7fab6bac8fe4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0c65bc0b-c8dc-4cd4-b5fc-c6c827bdddbe">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0c65bc0b-c8dc-4cd4-b5fc-c6c827bdddbe" title="Permalink to this equation">#</a></span>\[\begin{align}
 \lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert &amp;\leq \lVert T(x+h)-T(x)-P'(y)g \rVert + \lVert P'(y)g - P'(y)S'(x)h \rVert \\
 &amp; = o(\lVert h \rVert) + o(\lVert g \rVert)\\
 \Leftrightarrow \frac{\lVert T(x+h)-T(x)- P'(y) S'(x)h \rVert}{\lVert h \rVert} &amp; \leq \frac{o(\lVert h \rVert)}{\lVert h \rVert} + \frac{o(\lVert g \rVert)}{\lVert g \rVert} \frac{\lVert g \rVert}{\lVert h \rVert}\\
