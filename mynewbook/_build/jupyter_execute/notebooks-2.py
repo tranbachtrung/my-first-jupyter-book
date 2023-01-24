@@ -39,7 +39,8 @@
 # 
 # Jupyter Book will also embed your code blocks and output in your book.
 # For example, here's some sample Matplotlib code:
-
+import sys  
+!{sys.executable} -m pip install --user matplotlib
 # In[1]:
 
 
